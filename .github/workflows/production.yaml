@@ -1,0 +1,26 @@
+name: CD workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.15.0
+          cache: 'npm'
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.Heroku_Api_Key}}
+          heroku_app_name: ${{secrets.App_Name}}" #Must be unique in Heroku
+          heroku_email: ${{secrets.Email}}
