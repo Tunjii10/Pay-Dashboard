@@ -2,6 +2,7 @@
   "name": "pay-dashboard",
   "version": "0.0.0",
   "scripts": {
+    "start": "node server.js", 
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
