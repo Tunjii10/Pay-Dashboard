@@ -24,3 +24,4 @@ jobs:
           heroku_api_key: ${{secrets.Heroku_Api_Key}}
           heroku_app_name: ${{secrets.App_Name}} #Must be unique in Heroku
           heroku_email: ${{secrets.Email}}
+        
