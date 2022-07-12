@@ -14,9 +14,11 @@ export default {
 </script>
 
 <template>
-  <HeaderComponent />
-  <RouterView />
-  <FooterComponent />
+  <div class="content"> 
+    <HeaderComponent />
+    <RouterView />
+    <FooterComponent class="footer-component" />
+  </div>
 </template>
 
 <style>

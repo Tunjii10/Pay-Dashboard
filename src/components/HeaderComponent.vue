@@ -29,7 +29,7 @@ export default {
               viewBox="0 0 24 24"
             >
               <path
-                fill="#060606"
+                fill=""
                 d="M21,10.5H20v-1a1,1,0,0,0-2,0v1H17a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0v-1h1a1,1,0,0,0,0-2Zm-7.7,1.72A4.92,4.92,0,0,0,15,8.5a5,5,0,0,0-10,0,4.92,4.92,0,0,0,1.7,3.72A8,8,0,0,0,2,19.5a1,1,0,0,0,2,0,6,6,0,0,1,12,0,1,1,0,0,0,2,0A8,8,0,0,0,13.3,12.22ZM10,11.5a3,3,0,1,1,3-3A3,3,0,0,1,10,11.5Z"
               />
             </svg>
@@ -203,7 +203,8 @@ export default {
 /* 768px screen and below */
 @media screen and (max-width: 768px) {
   .nav-menu-small-screen {
-    display: block;
+    display: none;
+    /* display: block;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -213,7 +214,7 @@ export default {
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: center;
-    gap: 4rem;
+    gap: 4rem; */
   }
   .nav-menu-big-screen {
     display: none;
@@ -251,7 +252,7 @@ export default {
   top: 0;
   left: 0;
   background-color: var(--container-color);
-  padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+  padding: 0.8rem 0.7rem 0.5rem 0.7rem;
   box-shadow: 0 -1px 7px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;

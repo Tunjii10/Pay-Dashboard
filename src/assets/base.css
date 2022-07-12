@@ -72,7 +72,6 @@ html {
 }
 
 body {
-  margin: 0 0.4rem var(--header-height) 0.6rem;
   font-family: var(--body-font-1);
   font-size: var(--normal-font-size);
   background-color: var(--container-color);
@@ -100,6 +99,14 @@ img {
   height: auto;
 }
 
+.content{
+  min-height: 100vh;
+}
+
+.content .footer-component {
+  position: sticky;
+  top: 100vh;
+}
 /*================Reusable css classes=============*/
 .section {
   padding: 1rem 0 1rem;
@@ -120,14 +127,4 @@ img {
   text-align: center;
 }
 
-.container {
-  max-width: 768px;
-  margin-left: var(--mb-1-5);
-  margin-right: var(--mb-1-5);
-}
-
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
 
