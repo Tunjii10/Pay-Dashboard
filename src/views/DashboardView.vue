@@ -1,10 +1,14 @@
 <script>
 // import { RouterLink } from "vue-router";
 import AccountDetailComponent from "../components/AccountDetailComponent.vue";
+import OverviewComponent from "../components/OverviewComponent.vue";
+import TransactionComponent from "../components/TransactionComponent.vue";
 export default {
   name: "DashboardView",
   components: {
     AccountDetailComponent,
+    OverviewComponent,
+    TransactionComponent,
   },
 };
 </script>
@@ -12,6 +16,8 @@ export default {
 <template>
   <div class="dashboard-container">
     <AccountDetailComponent />
+    <OverviewComponent />
+    <TransactionComponent />
   </div>
 </template>
 
