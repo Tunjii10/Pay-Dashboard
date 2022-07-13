@@ -214,6 +214,7 @@ export default {
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: center;
+    z-index: var(--z-fixed);
     gap: 4rem; */
   }
   .nav-menu-big-screen {
@@ -261,12 +262,14 @@ export default {
 /* nav icon hover small screen */
 .nav-menu-small-screen .nav-icon:hover {
   fill: var(--text-color-light);
+  cursor: pointer;
 }
 
 /* nav item hover */
 .nav-item:hover {
   color: var(--text-color-light);
   fill: var(--text-color-light);
+  cursor: pointer;
 }
 
 /* nav icon small screen */

@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <div class="content"> 
+  <div class="content">
     <HeaderComponent />
     <RouterView />
     <FooterComponent class="footer-component" />

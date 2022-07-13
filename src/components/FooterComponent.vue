@@ -95,6 +95,7 @@ footer {
 .footer-menu .footer-item:hover {
   color: var(--text-color-light);
   fill: var(--text-color-light);
+  cursor: pointer;
 }
 
 .footer-copy {
