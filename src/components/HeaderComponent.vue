@@ -200,8 +200,8 @@ export default {
   width: 100%;
 }
 
-/* 768px screen and below */
-@media screen and (max-width: 768px) {
+/* 490px screen and below */
+@media screen and (max-width: 490px) {
   .nav-menu-small-screen {
     display: none;
     /* display: block;
@@ -222,20 +222,20 @@ export default {
   }
 }
 
-/* 769px screen and above */
-@media screen and (min-width: 769px) {
+/* 491px screen and above */
+@media screen and (min-width: 491px) {
   .nav-menu-small-screen {
     display: none;
   }
-  .nav-menu-big-screen {
+  /* .nav-menu-big-screen {
     display: none;
-  }
+  } */
 }
 
 /* nav menu big screen */
 .nav-menu-big-screen {
   height: 100%;
-  width: 15%;
+  width: 20%;
   position: fixed;
   z-index: var(--z-fixed);
   top: 0;
@@ -247,7 +247,8 @@ export default {
 
 /* nav menu default */
 .nav-menu-default {
-  width: 100%;
+  display: none;
+  /* width: 100%;
   position: fixed;
   z-index: var(--z-fixed);
   top: 0;
@@ -256,7 +257,7 @@ export default {
   padding: 0.8rem 0.7rem 0.5rem 0.7rem;
   box-shadow: 0 -1px 7px rgba(0, 0, 0, 0.15);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 /* nav icon hover small screen */
@@ -320,6 +321,8 @@ export default {
 
 /* settings nav big screen */
 .settings {
+  display: block;
+  width: 80%;
   border-top: 1px solid;
   border-color: var(--text-color-light);
   position: absolute;
