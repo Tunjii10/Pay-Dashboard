@@ -5,6 +5,19 @@ export default {
   components: {
     RouterLink,
   },
+  props: ["userName"],
+  methods: {
+    signOutUserButton: function () {
+      if (this.userName) {
+        this.signOutUser = {
+          username: "",
+          password: "",
+        };
+        this.$emit("signOutUser", this.signOutUser);
+        return this.$router.push("/");
+      }
+    },
+  },
 };
 </script>
 
@@ -14,7 +27,7 @@ export default {
     <!-- nav-bar -->
     <nav class="nav-bar">
       <!-- ===================default navbar || when user not logged in shows=========================-->
-      <div class="nav-menu-default">
+      <div class="nav-menu-default" v-if="!this.userName">
         <!-- default nav title -->
         <div class="nav-title">
           <h3>Dashboard</h3>
@@ -52,7 +65,7 @@ export default {
         </div>
       </div>
       <!-- =====================navbar bigscreen===================== -->
-      <div class="nav-menu-big-screen">
+      <div class="nav-menu-big-screen" v-if="this.userName">
         <!-- big screen nav title -->
         <div class="nav-title">
           <h3>Dashboard</h3>
@@ -128,7 +141,7 @@ export default {
                 d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"
               />
             </svg>
-            <p>SignOut</p>
+            <p @click="signOutUserButton()">SignOut</p>
           </div>
           <!-- big screen nav item || Settings -->
           <div class="nav-item settings">
@@ -148,7 +161,7 @@ export default {
         </div>
       </div>
       <!-- =====================navbar smallscreen===================== -->
-      <div class="nav-menu-small-screen">
+      <div class="nav-menu-small-screen" v-if="this.userName">
         <!-- small screen nav item || home -->
         <div class="nav-item">
           <svg
@@ -177,7 +190,7 @@ export default {
           </svg>
         </div>
         <!-- big screen nav item || signout -->
-        <div class="nav-item">
+        <div class="nav-item" @click="signOutUserButton()">
           <svg
             class="nav-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -203,8 +216,7 @@ export default {
 /* 490px screen and below */
 @media screen and (max-width: 490px) {
   .nav-menu-small-screen {
-    display: none;
-    /* display: block;
+    display: block;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -215,7 +227,7 @@ export default {
     display: flex;
     justify-content: center;
     z-index: var(--z-fixed);
-    gap: 4rem; */
+    gap: 4rem;
   }
   .nav-menu-big-screen {
     display: none;
@@ -227,9 +239,6 @@ export default {
   .nav-menu-small-screen {
     display: none;
   }
-  /* .nav-menu-big-screen {
-    display: none;
-  } */
 }
 
 /* nav menu big screen */
@@ -247,8 +256,7 @@ export default {
 
 /* nav menu default */
 .nav-menu-default {
-  display: none;
-  /* width: 100%;
+  width: 100%;
   position: fixed;
   z-index: var(--z-fixed);
   top: 0;
@@ -257,7 +265,7 @@ export default {
   padding: 0.8rem 0.7rem 0.5rem 0.7rem;
   box-shadow: 0 -1px 7px rgba(0, 0, 0, 0.15);
   display: flex;
-  justify-content: space-between; */
+  justify-content: space-between;
 }
 
 /* nav icon hover small screen */

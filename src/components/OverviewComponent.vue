@@ -5,6 +5,7 @@ export default {
   components: {
     // RouterLink,
   },
+  props: ["userName"],
 };
 </script>
 
@@ -16,11 +17,11 @@ export default {
     <div class="overview-details">
       <div>
         <p class="label">Name</p>
-        <p>Favour Adetunji</p>
+        <p>{{ this.userName }}</p>
       </div>
       <div>
         <p class="label">Balance</p>
-        <p class="overview-amount"><span>&#8358;</span>4.00</p>
+        <p class="overview-amount"><span>&#8358;</span>4,000,000</p>
       </div>
     </div>
     <div class="overview-buttons">

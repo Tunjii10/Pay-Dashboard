@@ -1,13 +1,14 @@
 <script>
 export default {
   name: "AccountDetailCommponent",
+  props: ["userName"],
 };
 </script>
 
 <template>
   <div class="account-container">
     <div class="account-title">
-      <h2>Hello, Favour</h2>
+      <h2>Hello, {{ this.userName }}</h2>
     </div>
     <div class="account-menu">
       <div class="search-form">

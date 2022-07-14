@@ -5,13 +5,14 @@ export default {
   components: {
     RouterLink,
   },
+  props: ["userName"],
 };
 </script>
 
 <template>
   <footer>
     <!-- ===================footer=========================-->
-    <div class="footer-container">
+    <div class="footer-container" v-if="!this.userName">
       <div class="footer-main">
         <!-- footer title -->
         <div class="footer-title">

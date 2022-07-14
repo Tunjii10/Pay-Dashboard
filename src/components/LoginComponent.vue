@@ -5,12 +5,40 @@ export default {
   components: {
     // RouterLink,
   },
+  emits: ["sign-user"],
+  data: function () {
+    return {
+      user: {
+        username: "",
+        password: "",
+      },
+      error: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    createUser: function () {
+      if (this.user.username.length > 0 && this.user.password.length > 0) {
+        this.$emit("signUser", this.user);
+        return this.$router.push("/dashboard");
+      } else {
+        if (this.user.username.length <= 0) {
+          this.error.username = "Username field cannot be empty";
+        }
+        if (this.user.password.length <= 0) {
+          this.error.password = "Password field cannot be empty ";
+        }
+      }
+    },
+  },
 };
 </script>
 
 <template>
   <div class="form-container">
-    <form class="login-form">
+    <form class="login-form" @submit.prevent="createUser()">
       <h1 class="form-title">Login Form</h1>
       <div class="flex-row">
         <label class="form-label" for="username">
@@ -22,11 +50,14 @@ export default {
           </svg>
         </label>
         <input
-          id="username"
+          v-model="user.username"
           class="form-input"
           placeholder="Username"
           type="text"
         />
+      </div>
+      <div v-if="error.username" class="error-message">
+        {{ error.username }}
       </div>
       <div class="flex-row">
         <label class="form-label" for="password">
@@ -40,11 +71,14 @@ export default {
           </svg>
         </label>
         <input
-          id="password"
+          v-model="user.password"
           class="form-input"
           placeholder="Password"
           type="password"
         />
+      </div>
+      <div v-if="error.password" class="error-message">
+        {{ error.password }}
       </div>
       <input class="form-submit" type="submit" value="LOGIN" />
     </form>
@@ -80,7 +114,7 @@ export default {
 
 .flex-row {
   display: flex;
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--mb-1);
 }
 
 .form-label {
@@ -136,5 +170,12 @@ export default {
 
 .form-forgot:focus {
   color: var(--text-color-light);
+}
+
+.error-message {
+  color: red;
+  font-size: var(--smaller-font-size);
+  margin: 0.5rem;
+  padding-left: 2rem;
 }
 </style>

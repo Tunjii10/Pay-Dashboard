@@ -7,12 +7,28 @@ export default {
     RouterLink,
     LoginComponent,
   },
+  data: function () {
+    return {
+      user: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  emits: ["sign-user-login"],
+  methods: {
+    userFill: function (n) {
+      (this.user.username = n.username),
+        (this.user.password = n.password),
+        this.$emit("signUserLogin", this.user);
+    },
+  },
 };
 </script>
 
 <template>
   <section class="section login-view">
-    <LoginComponent />
+    <LoginComponent @sign-user="userFill" />
   </section>
 </template>
 
