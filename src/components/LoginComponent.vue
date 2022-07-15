@@ -1,5 +1,5 @@
 <script>
-// import { RouterLink } from "vue-router";
+import { PayService } from "../services/payService.js";
 export default {
   name: "LoginComponent",
   components: {
@@ -9,27 +9,39 @@ export default {
   data: function () {
     return {
       user: {
-        username: "",
+        email: "",
         password: "",
       },
-      error: {
-        username: "",
+      validateError: {
+        email: "",
         password: "",
       },
+      serverError: "",
+      userId: "",
     };
   },
   methods: {
-    createUser: function () {
-      if (this.user.username.length > 0 && this.user.password.length > 0) {
-        this.$emit("signUser", this.user);
-        return this.$router.push("/dashboard");
-      } else {
-        if (this.user.username.length <= 0) {
-          this.error.username = "Username field cannot be empty";
+    createUser: async function () {
+      try {
+        if (this.user.email.length > 0 && this.user.password.length > 0) {
+          const formData = new FormData();
+          formData.append("email", this.user.email);
+          formData.append("password", this.user.password);
+
+          let response = await PayService.login(formData);
+          console.log(response);
+          this.$emit("signUser", this.user);
+          return this.$router.push("/dashboard");
+        } else {
+          if (this.user.email.length <= 0) {
+            this.validateError.email = "Username field cannot be empty";
+          }
+          if (this.user.password.length <= 0) {
+            this.validateError.password = "Password field cannot be empty ";
+          }
         }
-        if (this.user.password.length <= 0) {
-          this.error.password = "Password field cannot be empty ";
-        }
+      } catch (error) {
+        this.serverError = error;
       }
     },
   },
@@ -50,14 +62,14 @@ export default {
           </svg>
         </label>
         <input
-          v-model="user.username"
+          v-model="user.email"
           class="form-input"
-          placeholder="Username"
-          type="text"
+          placeholder="Email"
+          type="email"
         />
       </div>
-      <div v-if="error.username" class="error-message">
-        {{ error.username }}
+      <div v-if="validateError.email" class="error-message">
+        {{ validateError.email }}
       </div>
       <div class="flex-row">
         <label class="form-label" for="password">
@@ -77,10 +89,13 @@ export default {
           type="password"
         />
       </div>
-      <div v-if="error.password" class="error-message">
-        {{ error.password }}
+      <div v-if="validateError.password" class="error-message">
+        {{ validateError.password }}
       </div>
       <input class="form-submit" type="submit" value="LOGIN" />
+      <div v-if="serverError" class="error-message">
+        {{ serverError }}
+      </div>
     </form>
     <a class="form-forgot" href="#">Forgot password?</a>
   </div>

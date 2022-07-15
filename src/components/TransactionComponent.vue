@@ -24,7 +24,7 @@ export default {
         <tr class="table-row">
           <td>To Daniel School Fees</td>
           <td class="time">16th January, 2021 3:30pm</td>
-          <td><span>&#8358;</span>4000</td>
+          <td><span>&#x20A6;</span>4000</td>
           <td class="status completed">
             <svg
               class="status-icon"
@@ -42,7 +42,7 @@ export default {
         <tr class="table-row">
           <td>Rent Money</td>
           <td class="time">16th January, 2021 3:30pm</td>
-          <td><span>&#8358;</span>50,000</td>
+          <td><span>&#x20A6;</span>50,000</td>
           <td class="status failed">
             <svg
               class="status-icon"
@@ -60,7 +60,7 @@ export default {
         <tr class="table-row">
           <td>To Daniel School Fees</td>
           <td class="time">16th January, 2021 4:30pm</td>
-          <td><span>&#8358;</span>4000</td>
+          <td><span>&#x20A6;</span>4000</td>
           <td class="status processing">
             <svg
               class="status-icon"
@@ -79,7 +79,7 @@ export default {
         <tr class="table-row">
           <td>To Daniel School Fees</td>
           <td class="time">16th January, 2021 1:30pm</td>
-          <td><span>&#8358;</span>4000</td>
+          <td><span>&#x20A6;</span>4000</td>
           <td class="status completed">
             <svg
               class="status-icon"
@@ -97,7 +97,7 @@ export default {
         <tr class="table-row">
           <td>To Daniel School Fees</td>
           <td class="time">16th January, 2021 2:30pm</td>
-          <td><span>&#8358;</span>4000</td>
+          <td><span>&#x20A6;</span>4000</td>
           <td class="status completed">
             <svg
               class="status-icon"

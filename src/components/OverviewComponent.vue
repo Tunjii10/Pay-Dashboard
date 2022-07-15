@@ -11,6 +11,7 @@ export default {
 
 <template>
   <div class="overview-container">
+    {{ this.userName }}
     <div>
       <h3 class="overview-title">Overview</h3>
     </div>
