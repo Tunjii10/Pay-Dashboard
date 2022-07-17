@@ -100,7 +100,7 @@ export default {
 }
 
 .table-row-header th {
-  text-align: left;
+  text-align: center;
   padding: 0.2rem 0 0.2rem 0;
 }
 
