@@ -1,14 +1,14 @@
 <script>
 export default {
   name: "AccountDetailCommponent",
-  props: ["userName"],
+  props: ["userCred"],
 };
 </script>
 
 <template>
   <div class="account-container">
     <div class="account-title">
-      <h2>Hello, {{ this.userName }}</h2>
+      <h2>Hello, {{ this.userCred.name }}</h2>
     </div>
     <div class="account-menu">
       <div class="search-form">

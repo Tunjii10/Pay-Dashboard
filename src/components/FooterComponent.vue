@@ -1,18 +1,13 @@
 <script>
-import { RouterLink } from "vue-router";
 export default {
   name: "HeaderComponent",
-  components: {
-    RouterLink,
-  },
-  props: ["userName"],
 };
 </script>
 
 <template>
   <footer>
     <!-- ===================footer=========================-->
-    <div class="footer-container" v-if="!this.userName">
+    <div class="footer-container" v-if="$route.name == 'login'">
       <div class="footer-main">
         <!-- footer title -->
         <div class="footer-title">

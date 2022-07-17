@@ -12,18 +12,12 @@ export default {
   },
   data: function () {
     return {
-      user: {
-        username: "",
-        password: "",
-      },
+      message: "",
     };
   },
   methods: {
-    userFill: function (n) {
-      (this.user.username = n.username), (this.user.password = n.password);
-    },
-    userEmpty: function (n) {
-      (this.user.username = n.username), (this.user.password = n.password);
+    writeMessage: function () {
+      this.message = "User Successfully Logged Out";
     },
   },
 };
@@ -31,9 +25,9 @@ export default {
 
 <template>
   <div class="content">
-    <HeaderComponent @sign-out-user="userEmpty" :user-name="user.username" />
-    <RouterView @sign-user-login="userFill" :user-name="user.username" />
-    <FooterComponent class="footer-component" :user-name="user.username" />
+    <HeaderComponent @log-out="writeMessage" />
+    <RouterView :is-logged-out="message" />
+    <FooterComponent class="footer-component" />
   </div>
 </template>
 

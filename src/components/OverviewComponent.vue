@@ -1,28 +1,48 @@
 <script>
-// import { RouterLink } from "vue-router";
 export default {
   name: "OverviewComponent",
-  components: {
-    // RouterLink,
+  props: ["userInfos", "userCred"],
+  data: function () {
+    return {
+      ddatas: {
+        one: 2,
+        wwer: 3,
+      },
+    };
   },
-  props: ["userName"],
+  methods: {
+    formatNumber(num, dp) {
+      return parseFloat(num).toFixed(dp);
+    },
+  },
 };
 </script>
 
 <template>
   <div class="overview-container">
-    {{ this.userName }}
     <div>
       <h3 class="overview-title">Overview</h3>
     </div>
     <div class="overview-details">
       <div>
         <p class="label">Name</p>
-        <p>{{ this.userName }}</p>
+        <p>{{ this.userCred.name }}</p>
       </div>
       <div>
-        <p class="label">Balance</p>
-        <p class="overview-amount"><span>&#8358;</span>4,000,000</p>
+        <p class="label">Country</p>
+        <p>{{ this.userCred.country }}</p>
+      </div>
+    </div>
+    <h3 class="over-view-balance-title">Balance</h3>
+    <div class="over-view-balance">
+      <div v-for="userInfo in userInfos.balances">
+        <div class="ov-bal">
+          <div class="overview-amount-label">{{ userInfo.slug }} BALANCE</div>
+          <div class="overview-amount">
+            <span>{{ userInfo.slug }}</span>
+            {{ formatNumber(userInfo.balance, userInfo.decimal_places) }}
+          </div>
+        </div>
       </div>
     </div>
     <div class="overview-buttons">
@@ -113,11 +133,33 @@ export default {
   margin: var(--mb-1) 0 var(--mb-1) 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 5rem;
 }
 
 .overview-details .label {
   font-size: var(--smaller-font-size);
+}
+
+.over-view-balance {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 3rem;
+  row-gap: 1rem;
+  margin-bottom: var(--mb-0-75);
+}
+.ov-bal {
+  background-color: white;
+  padding: 0.2rem;
+  box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.25);
+   font-size: var(--smaller-font-size);
+   border-radius: 5px;
+}
+.over-view-balance-title {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: var(--mb-0-5);
 }
 
 .overview-amount {
@@ -127,7 +169,8 @@ export default {
 .overview-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  column-gap: 3.6rem;
+  row-gap: 1rem;
 }
 
 .button {

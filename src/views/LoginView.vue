@@ -1,34 +1,20 @@
 <script>
-import { RouterLink } from "vue-router";
 import LoginComponent from "../components/LoginComponent.vue";
+import FlashMessage from "../components/FlashMessage.vue";
 export default {
   name: "LoginView",
+  props:["isLoggedOut"],
   components: {
-    RouterLink,
     LoginComponent,
-  },
-  data: function () {
-    return {
-      user: {
-        username: "",
-        password: "",
-      },
-    };
-  },
-  emits: ["sign-user-login"],
-  methods: {
-    userFill: function (n) {
-      (this.user.username = n.username),
-        (this.user.password = n.password),
-        this.$emit("signUserLogin", this.user);
-    },
+    FlashMessage,
   },
 };
 </script>
 
 <template>
   <section class="section login-view">
-    <LoginComponent @sign-user="userFill" />
+    <FlashMessage :logged-out-message="isLoggedOut"/>
+    <LoginComponent />
   </section>
 </template>
 

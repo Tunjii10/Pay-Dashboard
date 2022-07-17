@@ -2,10 +2,6 @@
 import { PayService } from "../services/payService.js";
 export default {
   name: "LoginComponent",
-  components: {
-    // RouterLink,
-  },
-  emits: ["sign-user"],
   data: function () {
     return {
       user: {
@@ -29,8 +25,16 @@ export default {
           formData.append("password", this.user.password);
 
           let response = await PayService.login(formData);
-          console.log(response);
-          this.$emit("signUser", this.user);
+          if (response.data.status !== 200) {
+            return (this.serverError = response.data.message);
+          }
+          let userCredentials = {
+            userId: response.data.response.id,
+            name: response.data.response.name,
+            userName: response.data.response.username,
+            country: response.data.response.country_name,
+          };
+          localStorage.setItem("USER-CRED", JSON.stringify(userCredentials));
           return this.$router.push("/dashboard");
         } else {
           if (this.user.email.length <= 0) {
@@ -49,11 +53,19 @@ export default {
 </script>
 
 <template>
+  <!-- form container -->
   <div class="form-container">
     <form class="login-form" @submit.prevent="createUser()">
+      <!-- form title -->
       <h1 class="form-title">Login Form</h1>
+      <!-- form email row -->
+      <!-- form server error -->
+      <div v-if="serverError" class="error-message">
+        {{ serverError }}
+      </div>
       <div class="flex-row">
         <label class="form-label" for="username">
+          <!-- email svg -->
           <svg x="0px" y="0px" width="12px" height="13px">
             <path
               fill="black"
@@ -61,6 +73,7 @@ export default {
             />
           </svg>
         </label>
+        <!-- form email input -->
         <input
           v-model="user.email"
           class="form-input"
@@ -68,10 +81,13 @@ export default {
           type="email"
         />
       </div>
+      <!-- form validate email error -->
       <div v-if="validateError.email" class="error-message">
         {{ validateError.email }}
       </div>
+      <!-- form password row -->
       <div class="flex-row">
+        <!-- password svg -->
         <label class="form-label" for="password">
           <svg x="0px" y="0px" width="15px" height="5px">
             <g>
@@ -82,6 +98,7 @@ export default {
             </g>
           </svg>
         </label>
+        <!-- form password input -->
         <input
           v-model="user.password"
           class="form-input"
@@ -89,13 +106,11 @@ export default {
           type="password"
         />
       </div>
+      <!-- form validate password error -->
       <div v-if="validateError.password" class="error-message">
         {{ validateError.password }}
       </div>
       <input class="form-submit" type="submit" value="LOGIN" />
-      <div v-if="serverError" class="error-message">
-        {{ serverError }}
-      </div>
     </form>
     <a class="form-forgot" href="#">Forgot password?</a>
   </div>
@@ -162,7 +177,6 @@ export default {
   cursor: pointer;
   font-size: var(--normal-font-size);
   font-weight: var(--font-semi-bold);
-  text-shadow: 0 1px 0 rgba(black, 0.2);
 }
 .form-submit:focus {
   outline: none;

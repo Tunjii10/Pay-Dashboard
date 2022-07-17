@@ -4,14 +4,7 @@ export class PayService {
   static login(userCredentials) {
     // const headers = null;
     let dataUrl = `${import.meta.env.VITE_URL}/login`;
-    return axios.post(dataUrl, userCredentials, {
-      transformRequest: [
-        (data, headers) => {
-          delete headers.common.Authorization;
-          return data;
-        },
-      ],
-    });
+    return axios.post(dataUrl, userCredentials);
   }
 
   static fetchOrders(userId) {

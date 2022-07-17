@@ -1,20 +1,25 @@
 <script>
-import { RouterLink } from "vue-router";
+import { PayService } from "../services/payService.js";
 export default {
   name: "HeaderComponent",
-  components: {
-    RouterLink,
-  },
-  props: ["userName"],
   methods: {
-    signOutUserButton: function () {
-      if (this.userName) {
-        this.signOutUser = {
-          username: "",
-          password: "",
-        };
-        this.$emit("signOutUser", this.signOutUser);
-        return this.$router.push("/");
+    signOutUserButton: async function () {
+      try {
+        if (localStorage.getItem("USER-CRED") !== null) {
+          let user_cred = JSON.parse(localStorage.getItem("USER-CRED"));
+          const formData = new FormData();
+          formData.append("id", user_cred.userId);
+          let response = await PayService.logout(formData);
+          if (response.data.status !== 200) {
+            return console.log({ error: response.data.message });
+          } else {
+            this.$emit("logOut");
+            localStorage.removeItem("USER-CRED");
+            return this.$router.push("/");
+          }
+        }
+      } catch (error) {
+        console.log(error);
       }
     },
   },
@@ -27,7 +32,7 @@ export default {
     <!-- nav-bar -->
     <nav class="nav-bar">
       <!-- ===================default navbar || when user not logged in shows=========================-->
-      <div class="nav-menu-default" v-if="!this.userName">
+      <div class="nav-menu-default" v-if="$route.name == 'login'">
         <!-- default nav title -->
         <div class="nav-title">
           <h3>Dashboard</h3>
@@ -65,7 +70,7 @@ export default {
         </div>
       </div>
       <!-- =====================navbar bigscreen===================== -->
-      <div class="nav-menu-big-screen" v-if="this.userName">
+      <div class="nav-menu-big-screen" v-if="$route.name == 'dashboard'">
         <!-- big screen nav title -->
         <div class="nav-title">
           <h3>Dashboard</h3>
@@ -161,7 +166,7 @@ export default {
         </div>
       </div>
       <!-- =====================navbar smallscreen===================== -->
-      <div class="nav-menu-small-screen" v-if="this.userName">
+      <div class="nav-menu-small-screen" v-if="$route.name == 'dashboard'">
         <!-- small screen nav item || home -->
         <div class="nav-item">
           <svg
