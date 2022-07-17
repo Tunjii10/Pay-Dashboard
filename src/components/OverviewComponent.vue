@@ -153,8 +153,8 @@ export default {
   background-color: white;
   padding: 0.2rem;
   box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.25);
-   font-size: var(--smaller-font-size);
-   border-radius: 5px;
+  font-size: var(--smaller-font-size);
+  border-radius: 5px;
 }
 .over-view-balance-title {
   font-size: var(--normal-font-size);

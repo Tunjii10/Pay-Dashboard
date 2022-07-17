@@ -3,7 +3,7 @@ import LoginComponent from "../components/LoginComponent.vue";
 import FlashMessage from "../components/FlashMessage.vue";
 export default {
   name: "LoginView",
-  props:["isLoggedOut"],
+  props: ["isLoggedOut"],
   components: {
     LoginComponent,
     FlashMessage,
@@ -13,7 +13,7 @@ export default {
 
 <template>
   <section class="section login-view">
-    <FlashMessage :logged-out-message="isLoggedOut"/>
+    <FlashMessage :logged-out-message="isLoggedOut" />
     <LoginComponent />
   </section>
 </template>

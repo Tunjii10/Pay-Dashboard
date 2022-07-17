@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <div class="transaction-container">
+  <div class="transaction-container" id="transactions">
     <div class="table-title">
       <p>Transaction History</p>
     </div>
@@ -79,9 +79,6 @@ export default {
 
 <style scoped>
 @media screen and (max-width: 490px) {
-  .table td {
-    padding: 0.3rem;
-  }
   .time,
   .commission {
     display: none;
@@ -90,13 +87,11 @@ export default {
 .transaction-container {
   width: 100%;
   margin: 1rem 0 3rem 0;
-  
- 
 }
 .table {
-  table-layout:fixed;
-    width:100%;
-    word-wrap:break-word
+  table-layout: fixed;
+  width: 100%;
+  word-wrap: break-word;
 }
 .table-title {
   font-weight: var(--font-semi-bold);
@@ -113,31 +108,31 @@ export default {
   padding: 0.8rem 0 0.8rem 0;
   border-top: 1px solid;
   border-color: var(--background-header-bg);
+  text-align: center;
+  vertical-align: top;
 }
 
 .completed {
   color: green;
-  padding:  2rem 0 2rem 0;
 }
 
 .failed {
   color: red;
-  padding:  2rem 0 2rem 0;
 }
 
 .processing {
   color: orange;
-  padding: 2rem 0 2rem 0;
 }
 
 .status-icon {
   width: 0.8rem;
   height: 0.8rem;
 }
-.status {
+
+ .status {
   display: flex;
   flex-direction: row;
   gap: 0.3rem;
-  align-items: center;
+  align-items: baseline;
 }
 </style>

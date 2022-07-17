@@ -64,7 +64,7 @@ export default {
       <LoadingComponent />
     </div>
     <div v-if="serverError" class="dashboard-server-error">
-      500. Internel Server Error: {{serverError}}
+      500. Internel Server Error: {{ serverError }}
     </div>
     <div v-if="this.user !== [] && loading == false">
       <AccountDetailComponent :user-cred="this.userDetails" />
@@ -77,7 +77,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 .dashboard-container {
   margin: 0.8rem 0.6rem 0.5rem 0.5rem;
 }

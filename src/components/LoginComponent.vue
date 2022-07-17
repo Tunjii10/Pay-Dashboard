@@ -54,7 +54,7 @@ export default {
 
 <template>
   <!-- form container -->
-  <div class="form-container">
+  <div class="form-container" id="login">
     <form class="login-form" @submit.prevent="createUser()">
       <!-- form title -->
       <h1 class="form-title">Login Form</h1>
