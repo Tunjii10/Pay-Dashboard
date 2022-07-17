@@ -12,11 +12,10 @@ export default {
     TransactionComponent,
     LoadingComponent,
   },
-  props: ["userName"],
   data: function () {
     return {
       loading: false,
-      userNames: [],
+      userDetails: [],
       userInfo: [],
       userOrders: [],
       serverError: "",
@@ -66,7 +65,9 @@ export default {
     <div v-if="serverError" class="dashboard-server-error">
       500. Internel Server Error: {{ serverError }}
     </div>
-    <div v-if="this.user !== [] && loading == false">
+    <div
+      v-if="this.userInfo !== [] && this.userOrders !== [] && loading == false"
+    >
       <AccountDetailComponent :user-cred="this.userDetails" />
       <OverviewComponent
         :user-infos="this.userInfo"

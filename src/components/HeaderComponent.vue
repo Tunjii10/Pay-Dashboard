@@ -40,7 +40,7 @@ export default {
         <!-- default nav menu -->
         <div class="nav-menu">
           <!-- nav item || signup -->
-          <div class="nav-item">
+          <a href="#login" class="nav-item">
             <svg
               class="nav-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -51,10 +51,10 @@ export default {
                 d="M21,10.5H20v-1a1,1,0,0,0-2,0v1H17a1,1,0,0,0,0,2h1v1a1,1,0,0,0,2,0v-1h1a1,1,0,0,0,0-2Zm-7.7,1.72A4.92,4.92,0,0,0,15,8.5a5,5,0,0,0-10,0,4.92,4.92,0,0,0,1.7,3.72A8,8,0,0,0,2,19.5a1,1,0,0,0,2,0,6,6,0,0,1,12,0,1,1,0,0,0,2,0A8,8,0,0,0,13.3,12.22ZM10,11.5a3,3,0,1,1,3-3A3,3,0,0,1,10,11.5Z"
               />
             </svg>
-            <p><a href="#login">SignUp</a></p>
-          </div>
+            <p>SignUp</p>
+          </a>
           <!-- nav-item ||Signout -->
-          <div class="nav-item">
+          <a href="#login" class="nav-item">
             <svg
               class="nav-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +65,8 @@ export default {
                 d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"
               />
             </svg>
-            <p><a href="#login">SignIn</a></p>
-          </div>
+            <p>SignIn</p>
+          </a>
         </div>
       </div>
       <!-- =====================navbar bigscreen===================== -->
@@ -92,7 +92,7 @@ export default {
             <p>My Account</p>
           </div>
           <!-- big screen nav item || Transactions -->
-          <div class="nav-item">
+          <a href="#transactions" class="nav-item">
             <svg
               class="nav-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -104,8 +104,8 @@ export default {
                 d="M13,16H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM9,10h2a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Zm12,2H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-7-7H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Z"
               />
             </svg>
-            <p><a href="#transactions">Transactions</a></p>
-          </div>
+            <p>Transactions</p>
+          </a>
           <!-- big screen nav item || Cards -->
           <div class="nav-item">
             <svg
